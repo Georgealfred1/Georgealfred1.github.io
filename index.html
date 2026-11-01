@@ -3,50 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George Alfred | Data Analytics Portfolio</title>
+    <title>George Alfred | Data Analyst Portfolio</title>
     <style>
-        body {
-            background-color: #0b0c10;
-            margin: 0;
-            padding: 20px;
+        :root {
+            --bg-color: #0b0c10;
+            --surface-color: #1f2833;
+            --text-primary: #c5c6c7;
+            --slate-blue: #6A5ACD;
+            --electric-teal: #66fcf1;
+            --teal-dark: #45a29e;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); color: var(--text-primary); display: flex; line-height: 1.6; }
+        
+        /* Sidebar Navigation */
+        aside {
+            width: 260px;
+            background-color: var(--surface-color);
+            height: 100vh;
+            position: fixed;
+            padding: 2rem 1rem;
+            border-right: 2px solid var(--teal-dark);
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: space-between;
         }
-        .slide-container {
-            position: relative;
-            max-width: 1000px;
-            width: 100%;
-            margin-bottom: 25px;
-        }
-        .slide {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        aside .profile-area { text-align: center; }
+        aside .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--electric-teal); margin-bottom: 10px; }
+        aside h2 { color: #fff; font-size: 1.2rem; }
+        aside p { color: var(--electric-teal); font-size: 0.9rem; margin-bottom: 2rem; }
+        
+        aside nav a {
             display: block;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: 500;
         }
-        /* كود سحري بيقص الحتة اللي تحت من الصورة اللي فيها كلمة جاما لو حبيت */
-        .crop-gamma {
-            overflow: hidden;
-            border-radius: 10px;
+        aside nav a:hover, aside nav a.active {
+            background-color: var(--slate-blue);
+            color: #fff;
+            padding-left: 20px;
         }
-        .crop-gamma img {
-            margin-bottom: -35px; /* بيخبي العلامة المائية لو موجودة في أسفل الشريحة */
+
+        /* Main Content Area */
+        main {
+            margin-left: 260px;
+            padding: 3rem;
+            width: calc(100% - 260px);
+        }
+        
+        section { margin-bottom: 4rem; }
+        h1, h2 { color: #fff; }
+        .section-title { color: var(--electric-teal); border-bottom: 2px solid var(--slate-blue); padding-bottom: 10px; margin-bottom: 1.5rem; font-size: 1.8rem; }
+        
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--surface-color); padding: 20px; border-radius: 8px; border: 1px solid #333; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--electric-teal); box-shadow: 0 5px 15px rgba(102, 252, 241, 0.15); }
+        .card h3 { color: #fff; margin-bottom: 10px; border-bottom: 1px solid var(--teal-dark); padding-bottom: 5px; }
+        
+        .badge { display: inline-block; background: var(--slate-blue); color: #fff; padding: 6px 12px; border-radius: 15px; font-size: 0.9rem; margin: 5px 5px 0 0; }
+        
+        .btn { display: inline-block; background: var(--electric-teal); color: var(--bg-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: 0.3s; }
+        .btn:hover { background: #45a29e; color: #fff; }
+
+        @media (max-width: 768px) {
+            aside { width: 100%; height: auto; position: relative; }
+            main { margin-left: 0; width: 100%; padding: 1.5rem; }
+            body { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <div class="slide-container"><img src="1_George-Alfred.png" alt="Slide 1" class="slide"></div>
-    <div class="slide-container"><img src="2_About-Me.png" alt="Slide 2" class="slide"></div>
-    <div class="slide-container"><img src="3_Core-Expertise.png" alt="Slide 3" class="slide"></div>
-    <div class="slide-container"><img src="4_Certifications-and-Learning.png" alt="Slide 4" class="slide"></div>
-    <div class="slide-container"><img src="5_Project-1-E-Commerce-Revenue-Dashboard.png" alt="Slide 5" class="slide"></div>
-    <div class="slide-container"><img src="6_Project-2-Customer-Churn-Prediction-Model.png" alt="Slide 6" class="slide"></div>
-    <div class="slide-container"><img src="7_Project-3-Operational-Efficiency-Analysis.png" alt="Slide 7" class="slide"></div>
-    <div class="slide-container"><img src="8_My-Work-Process.png" alt="Slide 8" class="slide"></div>
-    <div class="slide-container"><img src="9_Who-I-Work-With.png" alt="Slide 9" class="slide"></div>
-    <div class="slide-container"><img src="10_Lets-Work-Together.png" alt="Slide 10" class="slide"></div>
+    <!-- Sidebar Navigation -->
+    <aside>
+        <div class="profile-area">
+            <img src="1_George-Alfred.png" alt="George Alfred" class="profile-img">
+            <h2>George Alfred</h2>
+            <p>Data Analyst</p>
+        </div>
+        <nav>
+            <a href="#about" class="active">About Me</a>
+            <a href="#expertise">Core Expertise</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact Me</a>
+        </nav>
+        <div style="font-size: 0.8rem; color: #666; text-align: center;">
+            © 2026 George Alfred
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p>I'm a data analyst specializing in helping <strong>SME founders and e-commerce businesses</strong> unlock growth through data-driven decision-making. With expertise in end-to-end analytics—from data cleaning to interactive dashboards—I deliver clear, actionable insights that drive revenue and operational efficiency.</p>
+                <p style="margin-top: 15px;">I've led competitive data science projects to <strong>1st place</strong> and built dashboards that transformed complex metrics into strategic clarity for stakeholders.</p>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise">
+            <h2 class="section-title">Core Expertise</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Analytics & Visualization</h3>
+                    <ul style="padding-left: 20px;">
+                        <li>Exploratory Data Analysis (EDA)</li>
+                        <li>Power BI Dashboards</li>
+                        <li>Excel Advanced Reporting</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Data Engineering</h3>
+                    <ul style="padding-left: 20px;">
+                        <li>SQL Query Design</li>
+                        <li>Python Scripting</li>
+                        <li>Data Cleaning & Preparation</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Strategic Skills</h3>
+                    <ul style="padding-left: 20px;">
+                        <li>Problem Solving</li>
+                        <li>Interactive Dashboard Creation</li>
+                        <li>Actionable Business Insights</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Portfolio Projects</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>E-Commerce Revenue Dashboard</h3>
+                    <p><strong>Challenge:</strong> Mid-sized e-commerce store losing visibility into sales trends.</p>
+                    <p><strong>Solution:</strong> Built an interactive Power BI dashboard tracking revenue by product and region.</p>
+                    <p style="margin-top: 10px; color: var(--electric-teal);"><strong>Impact:</strong> 23% revenue increase within 3 months.</p>
+                </div>
+                <div class="card">
+                    <h3>Customer Churn Prediction Model</h3>
+                    <p><strong>Challenge:</strong> SaaS startup unable to identify at-risk customers before cancellation.</p>
+                    <p><strong>Solution:</strong> Cleaned 50K+ records with Python; built predictive model with SQL.</p>
+                    <p style="margin-top: 10px; color: var(--electric-teal);"><strong>Impact:</strong> 87% Accuracy | $120K Savings.</p>
+                </div>
+                <div class="card">
+                    <h3>Operational Efficiency Analysis</h3>
+                    <p><strong>Challenge:</strong> Manufacturing SME struggling with production bottlenecks.</p>
+                    <p><strong>Solution:</strong> EDA on 6 months of data; created Looker Studio dashboard.</p>
+                    <p style="margin-top: 10px; color: var(--electric-teal);"><strong>Impact:</strong> $45K monthly savings.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2 class="section-title">Certifications & Learning</h2>
+            <div>
+                <span class="badge">IBM Data Analyst Fundamentals</span>
+                <span class="badge">DEPI Data Analyst Track</span>
+                <span class="badge">Google BI and Analytics with Looker (In Progress)</span>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Let's Work Together</h2>
+            <div class="card" style="text-align: center;">
+                <p>Ready to turn your data into competitive advantage? Schedule a free 30-minute discovery call.</p>
+                <div style="margin-top: 20px;">
+                    <a href="mailto:georgealfred1910@gmail.com" class="btn">Send Email</a>
+                    <a href="https://wa.me/201285581589" target="_blank" class="btn" style="background-color: #25D366; color: #fff; margin-left: 10px;">WhatsApp Chat</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
 </body>
 </html>
