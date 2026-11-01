@@ -18,7 +18,7 @@
         
         /* Sidebar Navigation */
         aside {
-            width: 260px;
+            width: 280px;
             background-color: var(--surface-color);
             height: 100vh;
             position: fixed;
@@ -27,6 +27,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow-y: auto;
         }
         aside .profile-area { text-align: center; }
         aside .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--electric-teal); margin-bottom: 10px; }
@@ -51,13 +52,12 @@
 
         /* Main Content Area */
         main {
-            margin-left: 260px;
+            margin-left: 280px;
             padding: 3rem;
-            width: calc(100% - 260px);
+            width: calc(100% - 280px);
         }
         
         section { margin-bottom: 4rem; }
-        h1, h2 { color: #fff; }
         .section-title { color: var(--electric-teal); border-bottom: 2px solid var(--slate-blue); padding-bottom: 10px; margin-bottom: 1.5rem; font-size: 1.8rem; }
         
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -65,8 +65,8 @@
         .card:hover { transform: translateY(-5px); border-color: var(--electric-teal); box-shadow: 0 5px 15px rgba(102, 252, 241, 0.15); }
         .card h3 { color: #fff; margin-bottom: 10px; border-bottom: 1px solid var(--teal-dark); padding-bottom: 5px; }
         
+        .project-card img { width: 100%; border-radius: 5px; cursor: pointer; object-fit: cover; border: 1px solid #444; margin-top: 10px; }
         .badge { display: inline-block; background: var(--slate-blue); color: #fff; padding: 6px 12px; border-radius: 15px; font-size: 0.9rem; margin: 5px 5px 0 0; }
-        
         .btn { display: inline-block; background: var(--electric-teal); color: var(--bg-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: 0.3s; }
         .btn:hover { background: #45a29e; color: #fff; }
 
@@ -82,7 +82,8 @@
     <!-- Sidebar Navigation -->
     <aside>
         <div class="profile-area">
-            <img src="1_George-Alfred.png" alt="George Alfred" class="profile-img">
+            <!-- استخدام الشريحة الأولى سليمة بدون قص -->
+            <img src="1_George-Alfred.png" alt="George Alfred" style="width: 100%; border-radius: 8px; border: 2px solid var(--electric-teal); margin-bottom: 10px;">
             <h2>George Alfred</h2>
             <p>Data Analyst</p>
         </div>
@@ -144,23 +145,26 @@
         <section id="projects">
             <h2 class="section-title">Portfolio Projects</h2>
             <div class="card-grid">
-                <div class="card">
+                <div class="card project-card">
                     <h3>E-Commerce Revenue Dashboard</h3>
                     <p><strong>Challenge:</strong> Mid-sized e-commerce store losing visibility into sales trends.</p>
                     <p><strong>Solution:</strong> Built an interactive Power BI dashboard tracking revenue by product and region.</p>
                     <p style="margin-top: 10px; color: var(--electric-teal);"><strong>Impact:</strong> 23% revenue increase within 3 months.</p>
+                    <img src="5_Project-1-E-Commerce-Revenue-Dashboard.png" alt="Project 1" onclick="window.open(this.src)">
                 </div>
-                <div class="card">
+                <div class="card project-card">
                     <h3>Customer Churn Prediction Model</h3>
                     <p><strong>Challenge:</strong> SaaS startup unable to identify at-risk customers before cancellation.</p>
                     <p><strong>Solution:</strong> Cleaned 50K+ records with Python; built predictive model with SQL.</p>
                     <p style="margin-top: 10px; color: var(--electric-teal);"><strong>Impact:</strong> 87% Accuracy | $120K Savings.</p>
+                    <img src="6_Project-2-Customer-Churn-Prediction-Model.png" alt="Project 2" onclick="window.open(this.src)">
                 </div>
-                <div class="card">
+                <div class="card project-card">
                     <h3>Operational Efficiency Analysis</h3>
                     <p><strong>Challenge:</strong> Manufacturing SME struggling with production bottlenecks.</p>
                     <p><strong>Solution:</strong> EDA on 6 months of data; created Looker Studio dashboard.</p>
                     <p style="margin-top: 10px; color: var(--electric-teal);"><strong>Impact:</strong> $45K monthly savings.</p>
+                    <img src="7_Project-3-Operational-Efficiency-Analysis.png" alt="Project 3" onclick="window.open(this.src)">
                 </div>
             </div>
         </section>
@@ -168,7 +172,7 @@
         <!-- Certifications Section -->
         <section id="certifications">
             <h2 class="section-title">Certifications & Learning</h2>
-            <div>
+            <div class="card">
                 <span class="badge">IBM Data Analyst Fundamentals</span>
                 <span class="badge">DEPI Data Analyst Track</span>
                 <span class="badge">Google BI and Analytics with Looker (In Progress)</span>
